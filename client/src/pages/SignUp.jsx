@@ -77,14 +77,14 @@ export default function SignUp() {
           <div className="flex gap-4 ">
             <button
               type="button"
-              className={`p-3 border rounded-lg w-full ${formData.role === 'seller' ? 'bg-blue-700 text-white' : 'bg-white text-slate-700 hover:bg-blue-300 hover:text-blue-700'}`}
+              className={`p-3 border rounded-lg w-full ${formData.role === 'seller' ? 'bg-blue-700 text-white' : 'bg-white text-slate-700 hover:bg-blue-200 hover:text-blue-700'}`}
               onClick={() => setFormData({ ...formData, role: 'seller' })}
             >
               Seller
             </button>
             <button
               type="button"
-              className={`p-3 border rounded-lg w-full ${formData.role === 'buyer' ? 'bg-blue-700 text-white' : 'bg-white text-slate-700 hover:bg-blue-300 hover:text-blue-700'}`}
+              className={`p-3 border rounded-lg w-full ${formData.role === 'buyer' ? 'bg-blue-700 text-white' : 'bg-white text-slate-700 hover:bg-blue-200 hover:text-blue-700'}`}
               onClick={() => setFormData({ ...formData, role: 'buyer' })}
             >
               Buyer
