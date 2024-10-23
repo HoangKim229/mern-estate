@@ -2,18 +2,21 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import OAuth from "../components/OAuth";
 
-
 export default function SignUp() {
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    role: "seller",
+  });
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.id]: e.target.value,
     });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -40,10 +43,12 @@ export default function SignUp() {
       setError(error.message);
     }
   };
+
   return (
     <div className="p-3 max-w-lg mx-auto">
       <h1 className="text-3xl text-center font-semibold my-7">Sign Up</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        {/* Form fields */}
         <input
           type="text"
           placeholder="username"
@@ -65,14 +70,38 @@ export default function SignUp() {
           id="password"
           onChange={handleChange}
         />
+
+        {/* Role button group moved here */}
+        <div className="flex flex-col gap-2">
+          <label className="font-semibold">Role:</label>
+          <div className="flex gap-4">
+            <button
+              type="button"
+              className={`p-3 border rounded-lg w-full ${formData.role === 'seller' ? 'bg-blue-700 text-white' : 'bg-white text-slate-700'}`}
+              onClick={() => setFormData({ ...formData, role: 'seller' })}
+            >
+              Seller
+            </button>
+            <button
+              type="button"
+              className={`p-3 border rounded-lg w-full ${formData.role === 'buyer' ? 'bg-blue-700 text-white' : 'bg-white text-slate-700'}`}
+              onClick={() => setFormData({ ...formData, role: 'buyer' })}
+            >
+              Buyer
+            </button>
+          </div>
+        </div>
+
+        {/* Submit button */}
         <button
           disabled={loading}
           className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80"
         >
           {loading ? "Loading..." : "Sign Up"}
         </button>
-        <OAuth/>
+        <OAuth />
       </form>
+
       <div className="flex gap-2 mt-5">
         <p>Have an account?</p>
         <Link to={"/sign-in"}>
