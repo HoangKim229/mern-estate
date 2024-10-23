@@ -69,7 +69,6 @@ export default function Search() {
   const handleChange = (e) => {
     if (
       e.target.id === "all" ||
-      e.target.id === "rent" ||
       e.target.id === "sale" ||
       e.target.id === "buy"
     ) {
@@ -156,16 +155,6 @@ export default function Search() {
                 checked={sidebardata.type === "all"}
               />
               <span>All</span>
-            </div>
-            <div className="flex gap-2">
-              <input
-                type="checkbox"
-                id="rent"
-                className="w-5"
-                onChange={handleChange}
-                checked={sidebardata.type === "rent"}
-              />
-              <span>Rent</span>
             </div>
             <div className="flex gap-2">
               <input
