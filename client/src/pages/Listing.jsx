@@ -26,7 +26,7 @@ export default function Listing() {
   const [copied, setCopied] = useState(false);
   const [contact, setContact] = useState(false);
   const params = useParams();
-  const {currentUser} = useSelector((state) => state.user);
+  const { currentUser } = useSelector((state) => state.user);
 
   useEffect(() => {
     const fetchListing = async () => {
@@ -101,7 +101,7 @@ export default function Listing() {
             </p>
             <div className="flex gap-4">
               <p className="bg-red-900 w-full max-w-[200px] text-white text-center p-1 rounded-md">
-              {listing.type === "sale" ? "For Sale" : "Want to Buy"}
+                {listing.type === "sale" ? "For Sale" : "Want to Buy"}
               </p>
               {listing.offer && (
                 <p className="bg-green-900 w-full max-w-[200px] text-white text-center p-1 rounded-md">
@@ -114,6 +114,33 @@ export default function Listing() {
               <span className="font-semibold text-black">Description - </span>
               {listing.description}
             </p>
+            
+            {/*Tạo ngày đăng bài*/}
+            <p className="text-slate-600 text-sm">
+              <span className="font-semibold">Posted on: </span>
+              {new Date(listing.createdAt).toLocaleString("en-US", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+                hour: "2-digit",
+                minute: "2-digit",
+              })}
+            </p>
+
+            {/* Thêm dòng kiểm tra và hiển thị ngày cập nhật nếu bài đăng đã được cập nhật */}
+            {listing.updatedAt && listing.updatedAt !== listing.createdAt && (
+              <p className="text-slate-600 text-sm">
+                <span className="font-semibold">Updated on: </span>
+                {new Date(listing.updatedAt).toLocaleString("en-US", {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })}
+              </p>
+            )}
+
             <ul className="text-green-900 font-semibold text-sm flex flex-wrap items-center gap-4 sm:gap-6">
               <li className="flex items-center gap-1 whitespace-nowrap ">
                 <FaBed className="text-lg" />
