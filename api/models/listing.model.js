@@ -54,14 +54,12 @@ const listingSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    createdAt: {
-      type: Date,
-      default: Date.now,
-      expires: 60 * 60 * 24 * 90,
-    },
   },
   { timestamps: true }
 );
+
+// Tạo chỉ mục TTL cho trường createdAt với thời gian hết hạn là 90 ngày
+listingSchema.index({ createdAt: 1 }, { expireAfterSeconds: 60 * 60 * 24 * 90 });
 
 const Listing = mongoose.model("Listing", listingSchema);
 
