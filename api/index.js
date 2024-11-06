@@ -7,7 +7,6 @@ import listingRouter from "./routes/listing.route.js";
 import statisticsRouter from "./routes/statistics.route.js"; // **Import statistics route**
 import cookieParser from "cookie-parser";
 import path from "path";
-import { updateUserStatus } from './middlewares/updateUserStatus.js'; // **Import function to update user status**
 dotenv.config();
 
 mongoose
@@ -29,10 +28,6 @@ app.use(cookieParser());
 
 // **Thêm route statistics**
 app.use("/api/statistics", statisticsRouter); // **Đường dẫn cho route thống kê**
-
-// **Gọi hàm updateUserStatus để cập nhật trạng thái người dùng sau mỗi khoảng thời gian nhất định**
-setInterval(updateUserStatus, 15 * 60 * 1000); // Cập nhật trạng thái mỗi 15 phút
-
 
 app.listen(3000, () => {
   console.log("Server is running on port 3000!");

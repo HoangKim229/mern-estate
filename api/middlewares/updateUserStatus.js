@@ -1,16 +1,29 @@
-import User from '../models/user.model.js'; // Import mô hình người dùng
+import User from '../models/user.model.js';
 
-export const updateUserStatus = async () => {
-  const fifteenMinutesAgo = new Date(Date.now() - 15 * 60 * 1000); // Thời gian 15 phút trước
-
+// Middleware cập nhật trạng thái online khi đăng nhập
+export const setActiveStatusOnLogin = async (req, res, next) => {
   try {
-    // Cập nhật trạng thái isOnline cho những người dùng đã không hoạt động sau 15 phút
-    await User.updateMany(
-      { lastActive: { $lt: fifteenMinutesAgo } }, // Điều kiện tìm kiếm
-      { isOnline: false } // Cập nhật trạng thái thành offline
-    );
-    console.log('User statuses updated successfully!');
+    const userId = req.user.id; // Lấy ID người dùng từ thông tin xác thực
+    await User.findByIdAndUpdate(userId, { isOnline: true });  // Cập nhật trạng thái online
+    next();  // Tiếp tục đến route tiếp theo
   } catch (error) {
-    console.error('Error updating user statuses:', error);
+    console.error(error);
+    next(error);  // Chuyển tiếp lỗi
   }
+};
+
+export const setInactiveStatusOnLogout = async (req, res, next) => {
+  if (req.user && req.user.id) {
+    try {
+      console.log(`Logging out user with ID: ${req.user.id}`);  // Kiểm tra xem req.user có tồn tại không
+      const userId = req.user.id;
+      await User.findByIdAndUpdate(userId, { isOnline: false });
+      console.log(`User ${userId} set to offline.`);  // Kiểm tra trạng thái offline
+    } catch (error) {
+      console.error("Error setting user status to offline:", error);
+    }
+  } else {
+    console.log("User not found or not authenticated.");  // Log khi req.user không tồn tại
+  }
+  next();
 };
