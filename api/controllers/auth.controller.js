@@ -23,10 +23,9 @@ export const signin = async (req, res, next) => {
     const validPassword = bcryptjs.compareSync(password, validUser.password);
     if (!validPassword) return next(errorHandler(401, 'Wrong credentials!'));
 
-    // **Cập nhật trạng thái isOnline thành true khi người dùng đăng nhập**
-    validUser.isOnline = true; // Đặt trạng thái người dùng thành online
-    validUser.lastActive = new Date(); // Cập nhật thời gian người dùng hoạt động
-    await validUser.save(); // Lưu thay đổi vào cơ sở dữ liệu
+    validUser.isOnline = true;
+    validUser.lastActive = new Date();
+    await validUser.save();
 
     const token = jwt.sign({ id: validUser._id }, process.env.JWT_SECRET);
     const { password: pass, ...rest } = validUser._doc;
@@ -46,10 +45,8 @@ export const google = async (req, res, next) => {
       const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
       const { password: pass, ...rest } = user._doc;
 
-      // **Cập nhật trạng thái isOnline thành true khi người dùng đăng nhập**
-      user.isOnline = true; // Đặt trạng thái người dùng thành online
-      await user.save(); // Lưu thay đổi vào cơ sở dữ liệu
-
+      user.isOnline = true;
+      await user.save();
       res
         .cookie('access_token', token, { httpOnly: true })
         .status(200)
@@ -82,14 +79,13 @@ export const google = async (req, res, next) => {
 
 export const signOut = async (req, res, next) => {
   try {
-    const userId = req.userId; // Giả sử đã có userId từ middleware xác thực token
+    const userId = req.userId;
 
-     // **Cập nhật trạng thái isOnline thành false khi người dùng đăng xuất**
      const user = await User.findById(userId);
      if (user) {
-       user.isOnline = false; // Đặt trạng thái người dùng thành offline
-       user.lastActive = null; // Xóa thời gian hoạt động
-       await user.save(); // Lưu thay đổi vào cơ sở dữ liệu
+       user.isOnline = false;
+       user.lastActive = null;
+       await user.save();
      }
 
     res.clearCookie('access_token');

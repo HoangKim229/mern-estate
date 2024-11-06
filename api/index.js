@@ -26,8 +26,7 @@ app.use(express.json());
 
 app.use(cookieParser());
 
-// **Thêm route statistics**
-app.use("/api/statistics", statisticsRouter); // **Đường dẫn cho route thống kê**
+app.use("/api/statistics", statisticsRouter);
 
 app.listen(3000, () => {
   console.log("Server is running on port 3000!");
