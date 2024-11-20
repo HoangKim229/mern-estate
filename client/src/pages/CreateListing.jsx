@@ -55,7 +55,7 @@ export default function CreateListing() {
           setUploading(false);
         });
     } else {
-      setImageUploadError("You can only upload 6 images per listing");
+      setImageUploadError("Total number of images must be less than 7 and at least 1 image must be selected");
       setUploading(false);
     }
   };
