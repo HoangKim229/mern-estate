@@ -50,25 +50,23 @@ export default function Home() {
       {/* top */}
       <div className="flex flex-col gap-6 p-28 px-3 max-w-6xl mx-auto">
         <h1 className="text-slate-700 font-bold text-3xl lg:text-6xl">
-          Find your next <span className="text-slate-500">perfect</span>
+          Mua bán <span className="text-slate-500">bất động sản</span>
           <br />
-          place with ease
+          một cách dễ dàng
         </h1>
         <div className="text-gray-400 text-xs sm:text-sm">
-          HoangKim Estate is the best place to find your next perfect place to
-          live.
+          Bất động sản Hoàng Gia là nơi tốt nhất để bạn tìm nơi sống lý tưởng tiếp theo của bạn.
           <br />
-          We have a wide range of properties for you to choose from.
+          Chúng tôi có nhiều loại bất động sản để bạn lựa chọn.
         </div>
         <Link
           to={"/search"}
           className="text-xs sm:text-sm text-blue-800 font-bold hover:underline"
         >
-          Let's get started...
+          Hãy bắt đầu nào...
         </Link>
       </div>
 
-      {/* swiper */}
       <Swiper navigation>
         {offerListings &&
           offerListings.length > 0 &&
@@ -86,20 +84,18 @@ export default function Home() {
           ))}
       </Swiper>
 
-      {/* listing results for offer, sale and buy */}
-
       <div className="max-w-6xl mx-auto p-3 flex flex-col gap-8 my-10">
         {offerListings && offerListings.length > 0 && (
           <div className="">
             <div className="my-3">
               <h2 className="text-2xl font-semibold text-slate-600">
-                Recent offers
+                Ưu đãi gần đây
               </h2>
               <Link
                 className="text-sm text-blue-800 hover:underline"
                 to={"/search?offer=true"}
               >
-                Show more offers
+                Hiển thị thêm ưu đãi
               </Link>
             </div>
             <div className="flex flex-wrap gap-4">
@@ -113,13 +109,13 @@ export default function Home() {
           <div className="">
             <div className="my-3">
               <h2 className="text-2xl font-semibold text-slate-600">
-                Recent places for sale
+                Địa điểm bán gần đây
               </h2>
               <Link
                 className="text-sm text-blue-800 hover:underline"
                 to={"/search?type=sale"}
               >
-                Show more places for sale
+                Hiển thị thêm địa điểm bán
               </Link>
             </div>
             <div className="flex flex-wrap gap-4">
@@ -133,13 +129,13 @@ export default function Home() {
           <div className="">
             <div className="my-3">
               <h2 className="text-2xl font-semibold text-slate-600">
-                Recent places for buy
+                Địa điểm muốn mua gần đây
               </h2>
               <Link
                 className="text-sm text-blue-800 hover:underline"
                 to={"/search?type=buy"}
               >
-                Show more places for buy
+                Hiển thị thêm địa điểm muốn mua
               </Link>
             </div>
             <div className="flex flex-wrap gap-4">

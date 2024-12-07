@@ -38,7 +38,7 @@ export default function OAuth() {
       type="button"
       className="bg-red-700 text-white p-3 rounded-lg hover:opacity-95"
     >
-      Continue with google
+      Đăng nhập với Google
     </button>
   );
 }

@@ -9,7 +9,7 @@ export const signup = async (req, res, next) => {
   const newUser = new User({ username, email, password: hashedPassword, role});
   try {
     await newUser.save();
-    res.status(201).json('User created successfully!');
+    res.status(201).json('Người dùng đã được tạo thành công!');
   } catch (error) {
     next(error);
   }
@@ -19,9 +19,9 @@ export const signin = async (req, res, next) => {
   const { email, password } = req.body;
   try {
     const validUser = await User.findOne({ email });
-    if (!validUser) return next(errorHandler(404, 'User not found!'));
+    if (!validUser) return next(errorHandler(404, 'Không tìm thấy người dùng!'));
     const validPassword = bcryptjs.compareSync(password, validUser.password);
-    if (!validPassword) return next(errorHandler(401, 'Wrong credentials!'));
+    if (!validPassword) return next(errorHandler(401, 'Giấy tờ chứng minh không đúng!'));
 
     validUser.isOnline = true;
     validUser.lastActive = new Date();
@@ -89,7 +89,7 @@ export const signOut = async (req, res, next) => {
      }
     
     res.clearCookie('access_token');
-    res.status(200).json('User has been logged out!');
+    res.status(200).json('Người dùng đã đăng xuất!');
   } catch (error) {
     next(error);
   }

@@ -30,12 +30,6 @@ export default function Profile() {
   const [userListings, setUserListings] = useState([]);
   const dispatch = useDispatch();
 
-  // firebase storage
-  // allow read;
-  // allow write: if
-  // request.resource.size < 2 * 1024 * 1024 &&
-  // request.resource.contentType.matches('image/.*')
-
   useEffect(() => {
     if (file) {
       handleFileUpload(file);
@@ -162,7 +156,7 @@ export default function Profile() {
   };
   return (
     <div className="p-3 max-w-lg mx-auto">
-      <h1 className="text-3xl font-semibold text-center my-7 ">Profile</h1>
+      <h1 className="text-3xl font-semibold text-center my-7 ">Hồ sơ</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input
           onChange={(e) => setFile(e.target.files[0])}
@@ -180,19 +174,19 @@ export default function Profile() {
         <p className="text-sm self-center">
           {fileUploadError ? (
             <span className="text-red-700">
-              Error Image upload (image must be less than 2 mb)
+              Lỗi tải hình ảnh lên (hình ảnh phải nhỏ hơn 2 mb)
             </span>
           ) : filePerc > 0 && filePerc < 100 ? (
             <span className="text-slate-700">{`Uploading ${filePerc}%`}</span>
           ) : filePerc === 100 ? (
-            <span className="text-green-700">Image successfully uploaded!</span>
+            <span className="text-green-700">Đã tải hình ảnh thành công!</span>
           ) : (
             ""
           )}
         </p>
         <input
           type="text"
-          placeholder="username"
+          placeholder="Tên người dùng"
           defaultValue={currentUser.username}
           id="username"
           className="border p-3 rounded-lg"
@@ -200,7 +194,7 @@ export default function Profile() {
         />
         <input
           type="email"
-          placeholder="email"
+          placeholder="Email"
           id="email"
           defaultValue={currentUser.email}
           className="border p-3 rounded-lg"
@@ -208,7 +202,7 @@ export default function Profile() {
         />
         <input
           type="password"
-          placeholder="password"
+          placeholder="Mật khẩu"
           onChange={handleChange}
           id="password"
           className="border p-3 rounded-lg"
@@ -217,13 +211,13 @@ export default function Profile() {
           disabled={loading}
           className="bg-slate-700 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80"
         >
-          {loading ? "Loading..." : "Update"}
+          {loading ? "Loading..." : "Cập nhật"}
         </button>
         <Link
           className="bg-green-700 text-white p-3 rounded-lg uppercase text-center hover:opacity-95"
           to={"/create-listing"}
         >
-          Create Listing
+          Tạo danh sách
         </Link>
       </form>
       <div className="flex justify-between mt-5">
@@ -231,28 +225,28 @@ export default function Profile() {
           onClick={handleDeleteUser}
           className="text-red-700 cursor-pointer"
         >
-          Delete account
+          Xoá tài khoản
         </span>
         <span onClick={handleSignOut} className="text-red-700 cursor-pointer">
-          Sign out
+          Đăng xuất
         </span>
       </div>
 
       <p className="text-red-700 mt-5">{error ? error : ""}</p>
       <p className="text-green-700 mt-5">
-        {updateSuccess ? "User is updated successfully!" : ""}
+        {updateSuccess ? "Người dùng đã được cập nhật thành công!" : ""}
       </p>
       <button onClick={handleShowListings} className="text-green-700 w-full">
-        Show Listings
+        Hiển thị danh sách
       </button>
       <p className="text-red-700 mt-5">
-        {showListingsError ? "Error showing listings" : ""}
+        {showListingsError ? "Lỗi hiển thị danh sách" : ""}
       </p>
 
       {userListings && userListings.length > 0 && (
         <div className="flex flex-col gap-4">
           <h1 className="text-center mt-7 text-2xl font-semibold">
-            Your Listings
+            Danh sách của bạn
           </h1>
           {userListings.map((listing) => (
             <div
@@ -278,10 +272,10 @@ export default function Profile() {
                   onClick={() => handleListingDelete(listing._id)}
                   className="text-red-700 uppercase"
                 >
-                  Delete
+                  Xoá
                 </button>
                 <Link to={`/update-listing/${listing._id}`}>
-                  <button className='text-green-700 uppercase'>Edit</button>
+                  <button className="text-green-700 uppercase">Sửa</button>
                 </Link>
               </div>
             </div>

@@ -5,3 +5,9 @@
 body{
     background-color: rgb(241, 245, 241);
 }
+
+/* Thêm vào phần CSS của bạn để trang dài hơn */
+main {
+    min-height: 130vh; /* Điều chỉnh chiều cao tối thiểu của trang, 120vh sẽ làm trang dài hơn */
+    padding-bottom: 10px; /* Thêm khoảng cách phía dưới để tạo không gian thêm */
+  }

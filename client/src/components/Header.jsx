@@ -27,8 +27,8 @@ export default function Header() {
       <div className="flex justify-between items-center max-w-6xl mx-auto p-3">
         <Link to="/">
           <h1 className="font-bold text-sm sm:text-xl flex flex-wrap">
-            <span className="text-slate-500">HoangKim</span>
-            <span className="text-slate-700">Estate</span>
+            <span className="text-slate-500">Bất Động Sản</span>
+            <span className="text-slate-700 ml-1">Hoàng Gia</span>
           </h1>
         </Link>
         <form
@@ -37,7 +37,7 @@ export default function Header() {
         >
           <input
             type="text"
-            placeholder="Search..."
+            placeholder="Tìm kiếm..."
             className="bg-transparent focus:outline-none w-24 sm:w-64"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
@@ -49,17 +49,17 @@ export default function Header() {
         <ul className="flex gap-4">
           <Link to="/">
             <li className="hidden sm:inline text-slate-700 hover:underline">
-              Home
+              Trang Chủ
             </li>
           </Link>
           <Link to="/about">
             <li className="hidden sm:inline text-slate-700 hover:underline">
-              About
+              Giới Thiệu
             </li>
           </Link>
           <Link to="/statistics">
             <li className="hidden sm:inline text-slate-700 hover:underline">
-              StatisticsReport
+              Báo Cáo Thống Kê
             </li>
           </Link>
           <Link to="/profile">
@@ -70,7 +70,7 @@ export default function Header() {
                 alt="profile"
               />
             ) : (
-              <li className=" text-slate-700 hover:underline">Sign in</li>
+              <li className=" text-slate-700 hover:underline">Đăng Nhập</li>
             )}
           </Link>
         </ul>

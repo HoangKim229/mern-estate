@@ -1,7 +1,7 @@
 import express from 'express';
 import { deleteUser, test, updateUser,  getUserListings, getUser} from '../controllers/user.controller.js';
 import { verifyToken } from '../utils/verifyUser.js';
-import { updateLastActive } from '../middlewares/updateLastActive.js'; // **Import middleware để cập nhật lastActive**
+import { updateLastActive } from '../middlewares/updateLastActive.js';
 
 
 const router = express.Router();

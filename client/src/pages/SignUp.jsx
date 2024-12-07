@@ -46,48 +46,46 @@ export default function SignUp() {
 
   return (
     <div className="p-3 max-w-lg mx-auto">
-      <h1 className="text-3xl text-center font-semibold my-7">Sign Up</h1>
+      <h1 className="text-3xl text-center font-semibold my-7">Đăng Ký</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        {/* Form fields */}
         <input
           type="text"
-          placeholder="username"
+          placeholder="Tên người dùng"
           className="border p-3 rounded-lg"
           id="username"
           onChange={handleChange}
         />
         <input
           type="email"
-          placeholder="email"
+          placeholder="Email"
           className="border p-3 rounded-lg"
           id="email"
           onChange={handleChange}
         />
         <input
           type="password"
-          placeholder="password"
+          placeholder="Mật khẩu"
           className="border p-3 rounded-lg"
           id="password"
           onChange={handleChange}
         />
 
-        {/* Role button group moved here */}
         <div className="flex flex-col gap-2">
-          <label className="font-semibold">Role:</label>
+          <label className="font-semibold">Vai trò:</label>
           <div className="flex gap-4 ">
             <button
               type="button"
               className={`p-3 border rounded-lg w-full ${formData.role === 'seller' ? 'bg-blue-700 text-white' : 'bg-white text-slate-700 hover:bg-blue-200 hover:text-blue-700'}`}
               onClick={() => setFormData({ ...formData, role: 'seller' })}
             >
-              Seller
+              Người Bán
             </button>
             <button
               type="button"
               className={`p-3 border rounded-lg w-full ${formData.role === 'buyer' ? 'bg-blue-700 text-white' : 'bg-white text-slate-700 hover:bg-blue-200 hover:text-blue-700'}`}
               onClick={() => setFormData({ ...formData, role: 'buyer' })}
             >
-              Buyer
+              Người Mua
             </button>
           </div>
         </div>
@@ -97,15 +95,15 @@ export default function SignUp() {
           disabled={loading}
           className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80"
         >
-          {loading ? "Loading..." : "Sign Up"}
+          {loading ? "Loading..." : "Đăng Ký"}
         </button>
         <OAuth />
       </form>
 
       <div className="flex gap-2 mt-5">
-        <p>Have an account?</p>
+        <p>Bạn đã có tài khoản?</p>
         <Link to={"/sign-in"}>
-          <span className="text-blue-700">Sign in</span>
+          <span className="text-blue-700">Đăng nhập</span>
         </Link>
       </div>
       {error && <p className='text-red-500 mt-5'>{error}</p>}

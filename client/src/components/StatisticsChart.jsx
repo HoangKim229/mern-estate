@@ -3,18 +3,16 @@ import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const StatisticsChart = ({ registeredUsers, activeUsers, postsCount }) => {
-  // Dữ liệu cho biểu đồ
+
   const data = [
-    { name: 'Registered Users', value: registeredUsers },
-    { name: 'Active Users', value: activeUsers },
-    { name: 'Total Posts', value: postsCount },
+    { name: 'Người dùng đã đăng ký', value: registeredUsers },
+    { name: 'Người dùng đang hoạt động', value: activeUsers },
+    { name: 'Tổng số bài viết', value: postsCount },
   ];
 
   return (
     <div className="w-full px-4 py-6">
-      <h2 className="text-2xl font-bold text-slate-700 mb-4 text-center">Statistics Chart</h2>
-      
-      {/* ResponsiveContainer giúp biểu đồ co dãn tốt */}
+      <h2 className="text-2xl font-bold text-slate-700 mb-4 text-center">Biểu đồ thống kê</h2>
       <div className="w-full h-[300px] md:h-[400px]">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={data} margin={{ top: 20, right: 20, left: 0, bottom: 20 }}>

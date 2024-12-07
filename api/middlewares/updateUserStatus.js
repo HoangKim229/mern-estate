@@ -1,16 +1,14 @@
-import User from '../models/user.model.js'; // Import mô hình người dùng
+import User from '../models/user.model.js';
 
 export const updateUserStatus = async () => {
-  const fifteenMinutesAgo = new Date(Date.now() - 15 * 60 * 1000); // Thời gian 15 phút trước
-
+  const fifteenMinutesAgo = new Date(Date.now() - 15 * 60 * 1000);
   try {
-    // Cập nhật trạng thái isOnline cho những người dùng đã không hoạt động sau 15 phút
     await User.updateMany(
-      { lastActive: { $lt: fifteenMinutesAgo } }, // Điều kiện tìm kiếm
-      { isOnline: false } // Cập nhật trạng thái thành offline
+      { lastActive: { $lt: fifteenMinutesAgo } },
+      { isOnline: false } 
     );
-    console.log('User statuses updated successfully!');
+    console.log('Trạng thái người dùng đã được cập nhật thành công!');
   } catch (error) {
-    console.error('Error updating user statuses:', error);
+    console.error('Lỗi khi cập nhật trạng thái người dùng:', error);
   }
 };
