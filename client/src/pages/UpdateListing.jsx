@@ -34,7 +34,7 @@ export default function CreateListing() {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const [isAddressModalOpen, setIsAddressModalOpen] = useState(false); // State để điều khiển mở modal
+  const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
   const [selectedProvince, setSelectedProvince] = useState("");
   const [selectedDistrict, setSelectedDistrict] = useState("");
   const [selectedWard, setSelectedWard] = useState("");
@@ -4993,7 +4993,7 @@ export default function CreateListing() {
               className="border p-3 rounded-lg w-full"
               id="address"
               required
-              onClick={handleAddressSelection} // Mở modal khi click vào ô Địa chỉ
+              onClick={handleAddressSelection}
               onChange={handleChange}
               value={formData.address}
               readOnly
@@ -5160,14 +5160,14 @@ export default function CreateListing() {
                 </div>
                 <button
                   type="button"
-                  onClick={handleAddressChange} // Cập nhật địa chỉ vào form khi chọn
+                  onClick={handleAddressChange}
                   className="bg-blue-500 text-white p-2 mt-4 w-full"
                 >
                   Xác nhận
                 </button>
                 <button
                   type="button"
-                  onClick={handleCloseModal} // Đóng modal khi bấm "Đóng"
+                  onClick={handleCloseModal}
                   className="bg-red-500 text-white p-2 mt-2 w-full"
                 >
                   Đóng
