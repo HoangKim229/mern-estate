@@ -22,7 +22,7 @@ export default function CreateListing() {
     bedrooms: 1,
     bathrooms: 1,
     area: 0,
-    regularPrice: 50,
+    regularPrice: 0,
     discountPrice: 0,
     offer: false,
     parking: false,
@@ -49,7 +49,7 @@ export default function CreateListing() {
 
   console.log(formData);
   const handleImageSubmit = (e) => {
-    if (files.length > 0 && files.length + formData.imageUrls.length < 7) {
+    if (files.length > 0 && files.length + formData.imageUrls.length < 15) {
       setUploading(true);
       setImageUploadError(false);
       const promises = [];
@@ -73,7 +73,7 @@ export default function CreateListing() {
           setUploading(false);
         });
     } else {
-      setImageUploadError("Tổng số hình ảnh phải ít hơn 7");
+      setImageUploadError("Tổng số hình ảnh phải ít hơn 15");
       setUploading(false);
     }
   };
@@ -144,9 +144,6 @@ export default function CreateListing() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      if (+formData.area <= 0) {
-        return setError("Diện tích phải lớn hơn 0");
-      }
       if (formData.imageUrls.length === 0)
         formData.imageUrls = [DEFAULT_IMAGE_URL];
       if (+formData.regularPrice < +formData.discountPrice)
@@ -1050,6 +1047,277 @@ export default function CreateListing() {
               },
               { value: "Đường Bùi Thị Xuân", text: "Đường Bùi Thị Xuân" },
               { value: "Đường Bùi Viện", text: "Đường Bùi Viện" },
+            ],
+          },
+        ],
+      },
+      {
+        value: "Quận 4",
+        text: "Quận 4",
+        wards: [
+          {
+            value: "Phường 13",
+            text: "Phường 13",
+            streets: [
+              { value: "Đường Hoàng Diệu", text: "Đường Hoàng Diệu" },
+              { value: "Đường Nguyễn Tất Thành", text: "Đường Nguyễn Tất Thành" },
+              { value: "Đường Đoàn Văn Bơ", text: "Đường Đoàn Văn Bơ" },
+              { value: "Đường Khánh Hội", text: "Đường Khánh Hội" },
+              { value: "Đường Xóm Chiếu", text: "Đường Xóm Chiếu" },
+              { value: "Đường Lê Văn Linh", text: "Đường Lê Văn Linh" },
+              { value: "Đường Bến Vân Đồn", text: "Đường Bến Vân Đồn" },
+              { value: "Đường Tôn Thất Thuyết", text: "Đường Tôn Thất Thuyết" },
+            ],
+          },
+          {
+            value: "Phường 1",
+            text: "Phường 1",
+            streets: [
+              { value: "Đường Nguyễn Tất Thành", text: "Đường Nguyễn Tất Thành" },
+              { value: "Đường Nguyễn Khoái", text: "Đường Nguyễn Khoái" },
+              { value: "Đường Tôn Thất Thuyết", text: "Đường Tôn Thất Thuyết" },
+              { value: "Đường Bến Vân Đồn", text: "Đường Bến Vân Đồn" },
+              { value: "Đường Đoàn Văn Bơ", text: "Đường Đoàn Văn Bơ" },
+              { value: "Đường Khánh Hội", text: "Đường Khánh Hội" },
+              { value: "Đường Nguyễn Văn Cừ", text: "Đường Nguyễn Văn Cừ" },
+              { value: "Đường Tân Vĩnh", text: "Đường Tân Vĩnh" },
+            ],
+          },
+          {
+            value: "Phường 2",
+            text: "Phường 2",
+            streets: [
+              { value: "Đường Đoàn Văn Bơ", text: "Đường Đoàn Văn Bơ" },
+              { value: "Đường Nguyễn Tất Thành", text: "Đường Nguyễn Tất Thành" },
+              { value: "Đường Tôn Thất Thuyết", text: "Đường Tôn Thất Thuyết" },
+              { value: "Đường Xóm Chiếu", text: "Đường Xóm Chiếu" },
+              { value: "Đường Khánh Hội", text: "Đường Khánh Hội" },
+              { value: "Đường Lê Văn Linh", text: "Đường Lê Văn Linh" },
+              { value: "Đường Nguyễn Văn Cừ", text: "Đường Nguyễn Văn Cừ" },
+              { value: "Đường Bến Vân Đồn", text: "Đường Bến Vân Đồn" },
+            ],
+          },
+          {
+            value: "Phường 3",
+            text: "Phường 3",
+            streets: [
+              { value: "Đường Nguyễn Tất Thành", text: "Đường Nguyễn Tất Thành" },
+              { value: "Đường Lê Văn Linh", text: "Đường Lê Văn Linh" },
+              { value: "Đường Bến Vân Đồn", text: "Đường Bến Vân Đồn" },
+              { value: "Đường Khánh Hội", text: "Đường Khánh Hội" },
+              { value: "Đường Nguyễn Văn Cừ", text: "Đường Nguyễn Văn Cừ" },
+              { value: "Đường Tôn Thất Thuyết", text: "Đường Tôn Thất Thuyết" },
+              { value: "Đường Đoàn Văn Bơ", text: "Đường Đoàn Văn Bơ" },
+              { value: "Đường Xóm Chiếu", text: "Đường Xóm Chiếu" },
+            ],
+          },
+          {
+            value: "Phường 4",
+            text: "Phường 4",
+            streets: [
+              { value: "Đường Nguyễn Tất Thành", text: "Đường Nguyễn Tất Thành" },
+              { value: "Đường Tôn Thất Thuyết", text: "Đường Tôn Thất Thuyết" },
+              { value: "Đường Nguyễn Khoái", text: "Đường Nguyễn Khoái" },
+              { value: "Đường Đoàn Văn Bơ", text: "Đường Đoàn Văn Bơ" },
+              { value: "Đường Xóm Chiếu", text: "Đường Xóm Chiếu" },
+              { value: "Đường Khánh Hội", text: "Đường Khánh Hội" },
+              { value: "Đường Bến Vân Đồn", text: "Đường Bến Vân Đồn" },
+              { value: "Đường Nguyễn Văn Cừ", text: "Đường Nguyễn Văn Cừ" },
+            ],
+          },
+          {
+            value: "Phường 5",
+            text: "Phường 5",
+            streets: [
+              { value: "Đường Đoàn Văn Bơ", text: "Đường Đoàn Văn Bơ" },
+              { value: "Đường Nguyễn Tất Thành", text: "Đường Nguyễn Tất Thành" },
+              { value: "Đường Khánh Hội", text: "Đường Khánh Hội" },
+              { value: "Đường Lê Văn Linh", text: "Đường Lê Văn Linh" },
+              { value: "Đường Nguyễn Văn Cừ", text: "Đường Nguyễn Văn Cừ" },
+              { value: "Đường Tôn Thất Thuyết", text: "Đường Tôn Thất Thuyết" },
+              { value: "Đường Bến Vân Đồn", text: "Đường Bến Vân Đồn" },
+              { value: "Đường Xóm Chiếu", text: "Đường Xóm Chiếu" },
+            ],
+          },
+          {
+            value: "Phường 6",
+            text: "Phường 6",
+            streets: [
+              { value: "Đường Nguyễn Tất Thành", text: "Đường Nguyễn Tất Thành" },
+              { value: "Đường Đoàn Văn Bơ", text: "Đường Đoàn Văn Bơ" },
+              { value: "Đường Tôn Thất Thuyết", text: "Đường Tôn Thất Thuyết" },
+              { value: "Đường Khánh Hội", text: "Đường Khánh Hội" },
+              { value: "Đường Lê Văn Linh", text: "Đường Lê Văn Linh" },
+              { value: "Đường Nguyễn Văn Cừ", text: "Đường Nguyễn Văn Cừ" },
+              { value: "Đường Bến Vân Đồn", text: "Đường Bến Vân Đồn" },
+              { value: "Đường Xóm Chiếu", text: "Đường Xóm Chiếu" },
+            ],
+          },
+          {
+            value: "Phường 7",
+            text: "Phường 7",
+            streets: [
+              { value: "Đường Nguyễn Tất Thành", text: "Đường Nguyễn Tất Thành" },
+              { value: "Đường Đoàn Văn Bơ", text: "Đường Đoàn Văn Bơ" },
+              { value: "Đường Khánh Hội", text: "Đường Khánh Hội" },
+              { value: "Đường Nguyễn Văn Cừ", text: "Đường Nguyễn Văn Cừ" },
+              { value: "Đường Tôn Thất Thuyết", text: "Đường Tôn Thất Thuyết" },
+              { value: "Đường Lê Văn Linh", text: "Đường Lê Văn Linh" },
+              { value: "Đường Bến Vân Đồn", text: "Đường Bến Vân Đồn" },
+              { value: "Đường Xóm Chiếu", text: "Đường Xóm Chiếu" },
+            ],
+          },
+          {
+            value: "Phường 8",
+            text: "Phường 8",
+            streets: [
+              { value: "Đường Nguyễn Tất Thành", text: "Đường Nguyễn Tất Thành" },
+              { value: "Đường Đoàn Văn Bơ", text: "Đường Đoàn Văn Bơ" },
+              { value: "Đường Khánh Hội", text: "Đường Khánh Hội" },
+              { value: "Đường Xóm Chiếu", text: "Đường Xóm Chiếu" },
+              { value: "Đường Tôn Thất Thuyết", text: "Đường Tôn Thất Thuyết" },
+              { value: "Đường Bến Vân Đồn", text: "Đường Bến Vân Đồn" },
+              { value: "Đường Nguyễn Văn Cừ", text: "Đường Nguyễn Văn Cừ" },
+              { value: "Đường Lê Văn Linh", text: "Đường Lê Văn Linh" },
+            ],
+          },
+        ],
+      },
+      {
+        value: "Quận 7",
+        text: "Quận 7",
+        wards: [
+          {
+            value: "Phường Tân Phú",
+            text: "Phường Tân Phú",
+            streets: [
+              { value: "Đường 20", text: "Đường 20" },
+              { value: "Đường Hà Huy Tập", text: "Đường Hà Huy Tập" },
+              { value: "Đường 17", text: "Đường 17" },
+              { value: "Đường Nguyễn Thị Thập", text: "Đường Nguyễn Thị Thập" },
+              { value: "Đường Huỳnh Tấn Phát", text: "Đường Huỳnh Tấn Phát" },
+              { value: "Đường Trần Xuân Soạn", text: "Đường Trần Xuân Soạn" },
+              { value: "Đường Nguyễn Hữu Thọ", text: "Đường Nguyễn Hữu Thọ" },
+              { value: "Đường Lê Văn Lương", text: "Đường Lê Văn Lương" },
+            ],
+          },
+          {
+            value: "Phường Tân Kiểng",
+            text: "Phường Tân Kiểng",
+            streets: [
+              { value: "Đường Nguyễn Thị Thập", text: "Đường Nguyễn Thị Thập" },
+              { value: "Đường Lê Văn Lương", text: "Đường Lê Văn Lương" },
+              { value: "Đường Trần Xuân Soạn", text: "Đường Trần Xuân Soạn" },
+              { value: "Đường Nguyễn Hữu Thọ", text: "Đường Nguyễn Hữu Thọ" },
+              { value: "Đường Phạm Thế Hiển", text: "Đường Phạm Thế Hiển" },
+              { value: "Đường Huỳnh Tấn Phát", text: "Đường Huỳnh Tấn Phát" },
+              { value: "Đường Nguyễn Văn Quỳ", text: "Đường Nguyễn Văn Quỳ" },
+              { value: "Đường Tân Kiểng", text: "Đường Tân Kiểng" },
+            ],
+          },
+          {
+            value: "Phường Phú Thuận",
+            text: "Phường Phú Thuận",
+            streets: [
+              { value: "Đường Nguyễn Thị Thập", text: "Đường Nguyễn Thị Thập" },
+              { value: "Đường Huỳnh Tấn Phát", text: "Đường Huỳnh Tấn Phát" },
+              { value: "Đường Phú Thuận", text: "Đường Phú Thuận" },
+              { value: "Đường Nguyễn Hữu Thọ", text: "Đường Nguyễn Hữu Thọ" },
+              { value: "Đường Nguyễn Thị Thập", text: "Đường Nguyễn Thị Thập" },
+              { value: "Đường Nguyễn Văn Linh", text: "Đường Nguyễn Văn Linh" },
+              { value: "Đường Tân Thuận Đông", text: "Đường Tân Thuận Đông" },
+              { value: "Đường Trần Xuân Soạn", text: "Đường Trần Xuân Soạn" },
+            ],
+          },
+          {
+            value: "Phường Tân Hưng",
+            text: "Phường Tân Hưng",
+            streets: [
+              { value: "Đường Nguyễn Thị Thập", text: "Đường Nguyễn Thị Thập" },
+              { value: "Đường Trần Xuân Soạn", text: "Đường Trần Xuân Soạn" },
+              { value: "Đường Huỳnh Tấn Phát", text: "Đường Huỳnh Tấn Phát" },
+              { value: "Đường Nguyễn Hữu Thọ", text: "Đường Nguyễn Hữu Thọ" },
+              { value: "Đường Nguyễn Thị Thập", text: "Đường Nguyễn Thị Thập" },
+              { value: "Đường Lê Văn Lương", text: "Đường Lê Văn Lương" },
+              { value: "Đường Tân Thuận Đông", text: "Đường Tân Thuận Đông" },
+              { value: "Đường Tân Kiểng", text: "Đường Tân Kiểng" },
+            ],
+          },
+        ],
+      },
+      {
+        value: "Quận 9",
+        text: "Quận 9",
+        wards: [
+          {
+            value: "Phường Long Bình",
+            text: "Phường Long Bình",
+            streets: [
+              { value: "Đường Hoàng Hữu Nam", text: "Đường Hoàng Hữu Nam" },
+              { value: "Đường Lê Văn Việt", text: "Đường Lê Văn Việt" },
+              { value: "Đường Nguyễn Duy Trinh", text: "Đường Nguyễn Duy Trinh" },
+              { value: "Đường Đỗ Xuân Hợp", text: "Đường Đỗ Xuân Hợp" },
+              { value: "Đường Nguyễn Văn Tăng", text: "Đường Nguyễn Văn Tăng" },
+              { value: "Đường Tam Hiệp", text: "Đường Tam Hiệp" },
+              { value: "Đường Nguyễn Xiển", text: "Đường Nguyễn Xiển" },
+              { value: "Đường Tăng Nhơn Phú", text: "Đường Tăng Nhơn Phú" },
+            ],
+          },
+          {
+            value: "Phường Phú Hữu",
+            text: "Phường Phú Hữu",
+            streets: [
+              { value: "Đường Liên Phường", text: "Đường Liên Phường" },
+              { value: "Đường Nguyễn Duy Trinh", text: "Đường Nguyễn Duy Trinh" },
+              { value: "Đường Tăng Nhơn Phú", text: "Đường Tăng Nhơn Phú" },
+              { value: "Đường Đỗ Xuân Hợp", text: "Đường Đỗ Xuân Hợp" },
+              { value: "Đường Nguyễn Xiển", text: "Đường Nguyễn Xiển" },
+              { value: "Đường Trường Thạnh", text: "Đường Trường Thạnh" },
+              { value: "Đường Phú Hữu", text: "Đường Phú Hữu" },
+              { value: "Đường Lê Văn Việt", text: "Đường Lê Văn Việt" },
+              { value: "Đường Nguyễn Văn Tăng", text: "Đường Nguyễn Văn Tăng" },
+            ],
+          },
+          {
+            value: "Phường Long Thạnh Mỹ",
+            text: "Phường Long Thạnh Mỹ",
+            streets: [
+              { value: "Đường Tăng Nhơn Phú", text: "Đường Tăng Nhơn Phú" },
+              { value: "Đường Lê Văn Việt", text: "Đường Lê Văn Việt" },
+              { value: "Đường Nguyễn Duy Trinh", text: "Đường Nguyễn Duy Trinh" },
+              { value: "Đường Đỗ Xuân Hợp", text: "Đường Đỗ Xuân Hợp" },
+              { value: "Đường Trường Thạnh", text: "Đường Trường Thạnh" },
+              { value: "Đường Nguyễn Xiển", text: "Đường Nguyễn Xiển" },
+              { value: "Đường Tăng Nhơn Phú", text: "Đường Tăng Nhơn Phú" },
+              { value: "Đường Phú Hữu", text: "Đường Phú Hữu" },
+            ],
+          },
+          {
+            value: "Phường Trường Thạnh",
+            text: "Phường Trường Thạnh",
+            streets: [
+              { value: "Đường Nguyễn Duy Trinh", text: "Đường Nguyễn Duy Trinh" },
+              { value: "Đường Tăng Nhơn Phú", text: "Đường Tăng Nhơn Phú" },
+              { value: "Đường Đỗ Xuân Hợp", text: "Đường Đỗ Xuân Hợp" },
+              { value: "Đường Nguyễn Xiển", text: "Đường Nguyễn Xiển" },
+              { value: "Đường Lê Văn Việt", text: "Đường Lê Văn Việt" },
+              { value: "Đường Phú Hữu", text: "Đường Phú Hữu" },
+              { value: "Đường Nguyễn Văn Tăng", text: "Đường Nguyễn Văn Tăng" },
+              { value: "Đường Tam Hiệp", text: "Đường Tam Hiệp" },
+            ],
+          },
+          {
+            value: "Phường Phước Bình",
+            text: "Phường Phước Bình",
+            streets: [
+              { value: "Đường Liên Phường", text: "Đường Liên Phường" },
+              { value: "Đường Lê Văn Việt", text: "Đường Lê Văn Việt" },
+              { value: "Đường Nguyễn Duy Trinh", text: "Đường Nguyễn Duy Trinh" },
+              { value: "Đường Tăng Nhơn Phú", text: "Đường Tăng Nhơn Phú" },
+              { value: "Đường Trường Thạnh", text: "Đường Trường Thạnh" },
+              { value: "Đường Nguyễn Xiển", text: "Đường Nguyễn Xiển" },
+              { value: "Đường Phú Hữu", text: "Đường Phú Hữu" },
+              { value: "Đường Nguyễn Văn Tăng", text: "Đường Nguyễn Văn Tăng" },
             ],
           },
         ],
@@ -4543,7 +4811,7 @@ export default function CreateListing() {
             placeholder="Tên danh sách"
             className="border p-3 rounded-lg"
             id="name"
-            maxLength="62"
+            maxLength="200"
             minLength="10"
             required
             onChange={handleChange}
@@ -4817,7 +5085,7 @@ export default function CreateListing() {
                 onChange={handleChange}
                 value={formData.bedrooms}
               />
-              <p>Giường</p>
+              <p>Phòng ngủ</p>
             </div>
             <div className="flex items-center gap-2">
               <input
@@ -4837,7 +5105,7 @@ export default function CreateListing() {
               <input
                 type="number"
                 id="area"
-                min="0"
+                min="1"
                 max="100000000"
                 required
                 className="p-3 border-gray-300 rounded-lg"
@@ -4851,8 +5119,8 @@ export default function CreateListing() {
               <input
                 type="number"
                 id="regularPrice"
-                min="50"
-                max="100000000000"
+                min="0"
+                max="1000000000000"
                 required
                 className="p-3 border-gray-300 rounded-lg"
                 onChange={handleChange}
@@ -4866,7 +5134,7 @@ export default function CreateListing() {
                   type="number"
                   id="discountPrice"
                   min="0"
-                  max="10000000000"
+                  max="100000000000"
                   required
                   className="p-3 border-gray-300 rounded-lg"
                   onChange={handleChange}

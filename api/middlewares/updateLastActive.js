@@ -8,7 +8,7 @@ export const updateLastActive = async (req, res, next) => {
     }
     next();
   } catch (error) {
-    console.error("Error updating last active:", error);
+    console.error("Lỗi khi cập nhật hoạt động gần đây nhất:", error);
     next();
   }
 };

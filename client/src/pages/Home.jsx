@@ -63,7 +63,7 @@ export default function Home() {
           to={"/search"}
           className="text-xs sm:text-sm text-blue-800 font-bold hover:underline"
         >
-          Hãy bắt đầu nào...
+          Hãy thử tìm kiếm xem nào...
         </Link>
       </div>
 

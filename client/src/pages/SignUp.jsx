@@ -90,12 +90,11 @@ export default function SignUp() {
           </div>
         </div>
 
-        {/* Submit button */}
         <button
           disabled={loading}
           className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80"
         >
-          {loading ? "Loading..." : "Đăng Ký"}
+          {loading ? "Đang tải trang..." : "Đăng Ký"}
         </button>
         <OAuth />
       </form>

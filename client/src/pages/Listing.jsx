@@ -50,9 +50,9 @@ export default function Listing() {
 
   return (
     <main>
-      {loading && <p className="text-center my-7 text-2xl">Loading...</p>}
+      {loading && <p className="text-center my-7 text-2xl">Đang tải...</p>}
       {error && (
-        <p className="text-center my-7 text-2xl">Something went wrong!</p>
+        <p className="text-center my-7 text-2xl">Đăng bài không thành công!</p>
       )}
       {listing && !loading && !error && (
         <div>
@@ -88,7 +88,7 @@ export default function Listing() {
           )}
           <div className="flex flex-col max-w-4xl mx-auto p-3 my-7 gap-4">
             <p className="text-2xl font-semibold">
-              {listing.name} - Giảm{" "}
+              {listing.name} - Bớt lộc {" "}
               {listing.offer
                 ? listing.discountPrice.toLocaleString("en-US")
                 : listing.regularPrice.toLocaleString("en-US")}{" "}
@@ -104,7 +104,13 @@ export default function Listing() {
 
             <p className="flex items-center gap-2 text-slate-600  text-sm">
               <FaMapMarkerAlt className="text-green-700" />
-              {listing.address}
+              {listing.address
+                .split(",")
+                .filter((part) => part.trim() !== "")
+                .map((part, index, array) =>
+                  index !== array.length - 1 ? `${part.trim()}, ` : part.trim()
+                )
+                .join("")}
             </p>
             <div className="flex gap-4">
               <p className="bg-red-900 w-full max-w-[200px] text-white text-center p-1 rounded-md">
@@ -123,7 +129,11 @@ export default function Listing() {
 
             <p className="text-slate-800">
               <span className="font-semibold text-black">Mô tả - </span>
-              {listing.description}
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: listing.description.replace(/\n/g, "<br />"),
+                }}
+              />
             </p>
 
             <p className="text-slate-600 text-sm">
@@ -179,7 +189,7 @@ export default function Listing() {
                 onClick={() => setContact(true)}
                 className="bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 p-3"
               >
-                Contact the lister
+                Liên hệ với người đăng tin
               </button>
             )}
             {contact && <Contact listing={listing} />}

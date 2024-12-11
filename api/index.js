@@ -13,7 +13,7 @@ dotenv.config();
 mongoose
   .connect(process.env.MONGO)
   .then(() => {
-    console.log("Connected to MongoDB!");
+    console.log("Đã kết nối với MongoDB!");
   })
   .catch((err) => {
     console.log(err);
@@ -33,7 +33,7 @@ setInterval(updateUserStatus, 15 * 60 * 1000);
 
 
 app.listen(3000, () => {
-  console.log("Server is running on port 3000!");
+  console.log("Máy chủ đang chạy trên cổng 3000!");
 });
 
 app.use("/api/user", userRouter);
@@ -49,7 +49,7 @@ app.get('*', (req, res) => {
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
-  const message = err.message || "Internal Server Error";
+  const message = err.message || "Lỗi máy chủ nội bộ";
   return res.status(statusCode).json({
     success: false,
     statusCode,

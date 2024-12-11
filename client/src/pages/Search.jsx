@@ -235,11 +235,11 @@ export default function Search() {
         </h1>
         <div className="p-7 flex flex-wrap gap-4">
           {!loading && listings.length === 0 && (
-            <p className="text-xl text-slate-700">No listing found!</p>
+            <p className="text-xl text-slate-700">Không tìm thấy danh sách nào!</p>
           )}
           {loading && (
             <p className="text-xl text-slate-700 text-center w-full">
-              Loading...
+              Đang tải trang...
             </p>
           )}
 
@@ -254,7 +254,7 @@ export default function Search() {
               onClick={onShowMoreClick}
               className="text-green-700 hover:underline p-7 text-center w-full"
             >
-              Show more
+              Hiển thị thêm
             </button>
           )}
         </div>

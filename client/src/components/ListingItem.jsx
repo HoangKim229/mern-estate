@@ -20,7 +20,11 @@ export default function ListingItem({ listing }) {
           <div className="flex items-center gap-1">
             <MdLocationOn className="h-4 w-4 text-green-700" />
             <p className="text-sm text-gray-600 truncate w-full">
-              {listing.address}
+              {listing.address
+                .split(",")
+                .filter((part) => part.trim() !== "")
+                .map((part) => part.trim())
+                .join(" ")}
             </p>
           </div>
           <p className="text-sm text-gray-600 line-clamp-2">
@@ -29,8 +33,8 @@ export default function ListingItem({ listing }) {
           <div className="text-slate-700 flex gap-4">
             <div className="font-bold text-xs">
               {listing.bedrooms > 1
-                ? `${listing.bedrooms} Giường `
-                : `${listing.bedrooms} Giường `}
+                ? `${listing.bedrooms} Phòng ngủ `
+                : `${listing.bedrooms} Phòng ngủ `}
             </div>
             <div className="font-bold text-xs">
               {listing.bathrooms > 1
