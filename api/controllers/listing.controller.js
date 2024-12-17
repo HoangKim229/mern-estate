@@ -96,8 +96,11 @@ export const getListings = async (req, res, next) => {
 
     const order = req.query.order || "desc";
 
+    const address = req.query.address || "";
+
     const listings = await Listing.find({
       name: { $regex: searchTerm, $options: "i" },
+      address: { $regex: address, $options: "i" },
       offer,
       furnished,
       parking,
